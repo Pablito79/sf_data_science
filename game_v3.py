@@ -16,8 +16,7 @@ def game_core_v3(number: int = 1) -> int:
     max_num = 101  # максимум для поиска
     
     while True:
-        attempt_counter += 1
-        
+        attempt_counter += 1 
         divination_num = (max_num + min_num) // 2
 
         if number > divination_num:
@@ -41,7 +40,7 @@ def score_game(game_core_v3) -> int:
 
     count_ls = []  # список для сохранения количества попыток
     #np.random.seed(1)  # фиксируем сид для воспроизводимости
-    random_array = np.random.randint(1, 101, size=(10000))  # загадали список чисел
+    random_array = np.random.randint(1, 101, size=(1000))  # загадали список чисел
 
     for number in random_array:
         count_ls.append(game_core_v3(number))
