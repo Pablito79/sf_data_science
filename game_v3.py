@@ -17,7 +17,7 @@ def game_core_v3(number: int = 1) -> int:
     
     while True:
         attempt_counter += 1 
-        divination_num = (max_num + min_num) // 2
+        divination_num = (max_num + min_num) // 2  # используем бинарный поиск
 
         if number > divination_num:
             min_num = divination_num  
