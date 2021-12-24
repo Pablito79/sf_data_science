@@ -1,8 +1,8 @@
 import numpy as np
 
 
-def game_core_v3(number: int = 1) -> int:
-    """
+def binary_divination(number: int = 1) -> int:
+    """ Используем бинарнй поиск
     Args:
         number (int, optional): Загаданное число. Defaults to 1.
 
@@ -17,7 +17,7 @@ def game_core_v3(number: int = 1) -> int:
     
     while True:
         attempt_counter += 1 
-        divination_num = (max_num + min_num) // 2  # используем бинарный поиск
+        divination_num = (max_num + min_num) // 2   # ищем среднее
 
         if number > divination_num:
             min_num = divination_num  
@@ -30,7 +30,7 @@ def game_core_v3(number: int = 1) -> int:
 
     return attempt_counter
 
-def score_game(game_core_v3) -> int:
+def score_game(binary_divination) -> int:
     """За какое количество попыток в среднем за 1000 подходов угадывает наш алгоритм
     Args:
         random_predict ([type]): функция угадывания
@@ -43,11 +43,13 @@ def score_game(game_core_v3) -> int:
     random_array = np.random.randint(1, 101, size=(1000))  # загадали список чисел
 
     for number in random_array:
-        count_ls.append(game_core_v3(number))
+        count_ls.append(binary_divination(number))
 
     score = int(np.mean(count_ls))  # находим среднее количество попыток
 
     print(f'Ваш алгоритм угадывает число в среднем за: {score} попыток')
     return(score)
 
-score_game(game_core_v3)
+if __name__ == "__main__":
+    # RUN
+    score_game(binary_divination)
